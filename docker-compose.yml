@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+    api:
+        image: ${AWS_ECR_IMAGE}
+        restart: unless-stopped
+        ports:
+            - "5000:${PORT}"
+        environment:
+            SERVER_TIMEZONE: "${SERVER_TIMEZONE}"
+            PORT: "${PORT}"
+            ORIGIN: "${ORIGIN}"
+            JWT_SECRET_STRING: "${JWT_SECRET_STRING}"
+            MONGODB_CONNECTION_URL: "${MONGODB_CONNECTION_URL}"
+            AWS_ECR_IMAGE: "${AWS_ECR_IMAGE}"
+            AWS_LOGS_GROUP: "${AWS_LOGS_GROUP}"
+            AWS_REGION: "${AWS_REGION}"
+        logging:
+            driver: awslogs
+            options:
+                awslogs-group: "${AWS_LOGS_GROUP}"
+                awslogs-region: "${AWS_REGION}"
