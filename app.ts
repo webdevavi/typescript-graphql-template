@@ -142,7 +142,13 @@ export const startApp = async () => {
 
     await new Promise<void>((resolve) => {
         httpServer.listen(PORT, () => {
-            logger.info(`http server up and running at port ${PORT}`)
+            if (!IS_PRODUCTION) {
+                logger.info(
+                    `http server up and running at http://localhost:${PORT}`
+                )
+            } else {
+                logger.info(`http server up and running at port ${PORT}`)
+            }
             resolve()
         })
     })

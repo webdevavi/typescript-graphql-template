@@ -19,5 +19,5 @@ export const ensureAuth = async (sessionToken: string) => {
 
     if (!user) return { isAuthorized: false, user: null, sessionId: null }
 
-    return { isAuthorized: true, user, sessionId }
+    return { isAuthorized: true, user, sessionId: session._id }
 }

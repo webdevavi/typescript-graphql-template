@@ -1,1 +1,1 @@
-export * from './AppContext.type.ts'
+export * from './AppContext.type'
